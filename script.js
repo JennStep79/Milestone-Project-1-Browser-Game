@@ -1,8 +1,41 @@
 // create event listeners for clicked cards
 const cards = document.querySelectorAll('.card');
 
+let hasFlipped = false;
+let firstCard, secondCard;
+
 function flipCard() {
-    this.classList.toggle('flip');
+    this.classList.add('flip');
+    if (!hasFlipped) {
+        // first choice
+        hasFlipped = true;
+        firstCard = this;
+    } else {
+        // second choice
+        hasFlipped = false;
+        secondCard = this;
+
+        checkForMatch();
+    }
+}
+
+function checkForMatch(){
+    let isMatch = firstCard.dataset.image === secondCard.dataset.image;
+    
+    isMatch ? freezeCards() : resetCards();
+    
+}
+
+function freezeCards() {
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
+}
+
+function resetCards() {
+    setTimeout(() => {
+        firstCard.classList.remove('flip');
+        secondCard.classList.remove('flip');
+        }, 1500);
 }
 cards.forEach(card => card.addEventListener('click', flipCard));
 // add function to show flipped card value (faceup)
