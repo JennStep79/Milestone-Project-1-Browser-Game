@@ -29,7 +29,7 @@
 }
 .timer-score-info {
     color: white;
-    font-family: gabrwffr;
+    font-family: gabrwffr, serif;
     text-shadow: 3px 2px black;
     font-size: 1.5em;
     margin-bottom: 10px;
@@ -61,7 +61,9 @@ body {
 .card.flip {
     transform: rotateY(180deg);
 }
-
+.card:hover {
+    cursor: pointer;
+}
 .card-front, 
 .card-back {
     width: 100%;
@@ -75,8 +77,40 @@ body {
 .card-front {
     transform: rotateY(180deg);
 }
+/*style game over|winner and play again messages */
+.overlay-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: white;
+    font-family: gabrwffr, serif;
+    text-shadow: 3px 2px black;
+}
+.overlay-play-again {
+    font-size: .3em;
+}
+.overlay-message.visible {
+    display: flex;
+    flex-direction: column;
+    animation: overlay-grow 500ms forwards;
+}
 
-
+@keyframes overlay-grow {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+        font-size: 0;
+    }
+    to {
+        font-size: 10em;
+        background-color: rgba(0, 0, 0, .75);
+    }
+}
 /* style scoreboard text */
 
 /* style instructions text */
