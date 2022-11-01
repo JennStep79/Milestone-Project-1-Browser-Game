@@ -9,31 +9,34 @@
     src: url("/assets/Fonts/GABRWFFR.woff2") format('woff2');
 }
 .game-info {
+    margin-left: 450px;
+    margin-right: 450px;
     display: flex;
     flex-direction: column;
 }
 .game-title {
     color: ghostwhite;
     font-size: 2em;
-    font-family: gabrwffr;
+    font-family: gabrwffr, serif;
     text-shadow: 3px 2px black;
     text-align: center;
+    margin-top: 15px;
 }
 .timer-score-container {
-    grid-column: 1 / -1;
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
 }
 .timer-score-info {
     color: white;
     font-family: gabrwffr;
     text-shadow: 3px 2px black;
     font-size: 1.5em;
+    margin-bottom: 10px;
 }
 /* background */
 body {
     height: 100vh;
-    display: flex;
     background: radial-gradient(purple, rgb(70, 7, 70));
 }
 /* gameboard container */

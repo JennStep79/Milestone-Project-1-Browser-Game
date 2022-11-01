@@ -2,21 +2,26 @@
 const cards = document.querySelectorAll('.card');
 
 let hasFlipped = false;
+let freezeBoard = false;
 let firstCard, secondCard;
 
 function flipCard() {
+    if (freezeBoard) return;
+    if (this === firstCard) return;
+
     this.classList.add('flip');
+
     if (!hasFlipped) {
         // first choice
         hasFlipped = true;
         firstCard = this;
-    } else {
+        return;
+    }
         // second choice
         hasFlipped = false;
         secondCard = this;
 
         checkForMatch();
-    }
 }
 // function to check for matches
 function checkForMatch(){
@@ -30,11 +35,23 @@ function freezeCards() {
 }
 // function to reset unmatched cards back to facedown
 function resetCards() {
+    freezeBoard = true;
     setTimeout(() => {
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
+        resetBoard();
         }, 1500);
 }
+function resetBoard() {
+    [hasFlipped, freezeBoard] = [false, false];
+    [firstCard, secondCard] = [null, null];
+}
+(function shuffleCards() {
+    cards.forEach(card => {
+        let randomNum = Math.floor(Math.random() * 12);
+        card.style.order = randomNum;
+    });
+})();
 cards.forEach(card => card.addEventListener('click', flipCard));
 
 
