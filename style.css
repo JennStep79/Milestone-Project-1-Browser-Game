@@ -6,21 +6,29 @@
 /* style game title text */
 @font-face {
     font-family: "GABRWFFR";
-    src: url("assets/Fonts/GABRWFFR.TTF") format(TTF);
+    src: url("/assets/Fonts/GABRWFFR.woff2") format('woff2');
 }
-/*.game-title {
+.game-info {
+    display: flex;
+    flex-direction: column;
+}
+.game-title {
     color: ghostwhite;
-    font-size: 4em;
+    font-size: 2em;
+    font-family: gabrwffr;
+    text-shadow: 3px 2px black;
     text-align: center;
 }
-/*.timer-score-container {
+.timer-score-container {
     grid-column: 1 / -1;
     display: flex;
     justify-content: space-between;
-}*/
-/*.timer-score-info {
+}
+.timer-score-info {
     color: white;
-    font-size: 2em;
+    font-family: gabrwffr;
+    text-shadow: 3px 2px black;
+    font-size: 1.5em;
 }
 /* background */
 body {
@@ -37,13 +45,6 @@ body {
     flex-wrap: wrap;
     perspective: 1000px;
  }
-    /*display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-gap: 10px;
-    margin: 50px;
-    justify-content: center;
-} */
-/* card size, shape, and color */
 .card { 
     width: 25%;
     height: 33.33%;
@@ -57,11 +58,7 @@ body {
 .card.flip {
     transform: rotateY(180deg);
 }
-   /* background-color: black;
-    height: 150px;
-    width: 150px;
-}*/
-/* card blank (facedown) */
+
 .card-front, 
 .card-back {
     width: 100%;

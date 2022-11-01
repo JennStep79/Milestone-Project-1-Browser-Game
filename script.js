@@ -18,19 +18,17 @@ function flipCard() {
         checkForMatch();
     }
 }
-
+// function to check for matches
 function checkForMatch(){
     let isMatch = firstCard.dataset.image === secondCard.dataset.image;
-    
     isMatch ? freezeCards() : resetCards();
-    
 }
-
+// function to freeze matched cards on game board
 function freezeCards() {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
 }
-
+// function to reset unmatched cards back to facedown
 function resetCards() {
     setTimeout(() => {
         firstCard.classList.remove('flip');
@@ -38,13 +36,12 @@ function resetCards() {
         }, 1500);
 }
 cards.forEach(card => card.addEventListener('click', flipCard));
-// add function to show flipped card value (faceup)
 
-// function to check for matches
 
-// function to reset unmatched cards back to facedown
 
-// function to clear matched cards from game board
+
+
+
 
 // event listeners to play sound when turned over (animal sound or intrument sound or whoosh)
 
