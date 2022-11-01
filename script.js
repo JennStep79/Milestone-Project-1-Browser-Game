@@ -1,5 +1,10 @@
 // create event listeners for clicked cards
+const cards = document.querySelectorAll('.card');
 
+function flipCard() {
+    this.classList.toggle('flip');
+}
+cards.forEach(card => card.addEventListener('click', flipCard));
 // add function to show flipped card value (faceup)
 
 // function to check for matches

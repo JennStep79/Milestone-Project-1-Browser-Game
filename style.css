@@ -1,16 +1,81 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 /* style game title text */
-
+@font-face {
+    font-family: "GABRWFFR";
+    src: url("assets/Fonts/GABRWFFR.TTF") format(TTF);
+}
+/*.game-title {
+    color: ghostwhite;
+    font-size: 4em;
+    text-align: center;
+}
+/*.timer-score-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+}*/
+/*.timer-score-info {
+    color: white;
+    font-size: 2em;
+}
 /* background */
-
+body {
+    height: 100vh;
+    display: flex;
+    background: radial-gradient(purple, rgb(70, 7, 70));
+}
 /* gameboard container */
-
+ .gameboard-container { 
+    width: 640px;
+    height: 640px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+ }
+    /*display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px;
+    margin: 50px;
+    justify-content: center;
+} */
 /* card size, shape, and color */
-
+.card { 
+    width: 25%;
+    height: 33.33%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
+.card:active {
+    transform: scale(.97);
+}
+.card.flip {
+    transform: rotateY(180deg);
+}
+   /* background-color: black;
+    height: 150px;
+    width: 150px;
+}*/
 /* card blank (facedown) */
-
+.card-front, 
+.card-back {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    position: absolute;
+    border-radius: 10px;
+    backface-visibility: hidden;
+}
 /* card images (faceup) 2 each */
+.card-front {
+    transform: rotateY(180deg);
+}
 
-/* animation on click (turning faceup or facedown) */
 
 /* style scoreboard text */
 
