@@ -10,6 +10,7 @@ function flipCard() {
     if (this === firstCard) return;
 
     this.classList.add('flip');
+    document.getElementById('flipped').play();
 
     if (!hasFlipped) {
         // first choice
@@ -26,8 +27,21 @@ function flipCard() {
 // function to check for matches
 function checkForMatch(){
     let isMatch = firstCard.dataset.image === secondCard.dataset.image;
-    isMatch ? freezeCards() : resetCards();
-}
+    if (isMatch) {
+        freezeCards();
+        document.getElementById('match').play();
+    } else {
+        resetCards();
+        document.getElementById('noMatch').play();
+    }
+    // isMatch ? freezeCards(): resetCards();
+        
+        // this.audioControl.match();
+        // this.totalMatches++;
+        // this.ticker.innerText = this.totalMatches;
+        
+        // this.audioControl.noMatch();
+    }  
 // function to freeze matched cards on game board
 function freezeCards() {
     firstCard.removeEventListener('click', flipCard);
@@ -46,6 +60,19 @@ function resetBoard() {
     [hasFlipped, freezeBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
 }
+
+// function ready() {
+//     // let game = new MemoryMatch(60, cards);
+//     let overlays = Array.from(document.getElementsByClassName('overlay-message'));
+
+//     overlays.forEach(overlay => {
+//         overlay.addEventListener('click', () => {
+//             window.location.reload();
+//         });
+//         this.audioControl = new AudioControl();
+//     })
+// }
+// function to reset (shuffle) cards
 (function shuffleCards() {
     cards.forEach(card => {
         let randomNum = Math.floor(Math.random() * 12);
@@ -54,21 +81,63 @@ function resetBoard() {
 })();
 cards.forEach(card => card.addEventListener('click', flipCard));
 
+// class MemoryMatch {
+//     constructor(totalTime, cards) {
+//         this.cardsArray = cards;
+//         this.totalTime = totalTime;
+//         this.timeRemaining = totalTime;
+//         this.timer = document.getElementById('time-remaining');
+//         this.ticker = document.getElementById('score');
+//         this.audioControl = new AudioControl();
+//     }
+//      gameStart() {
+//         this.timeRemaining = this.totalTime;
+//         resetBoard();
+//         this.timer.innerText = this.timeRemaining;
+//         this.ticker.innerText = this.totalMatches;
+//     }
+// }
 
 
 
 
 
 
-// event listeners to play sound when turned over (animal sound or intrument sound or whoosh)
 
-// event listeners to play ding ding sound when a match is found
+// class AudioControl {
+//     constructor() {
+//         this.flipSound = new Audio("assets\Audio\whoosh.mp3");
+//         this.matchSound = new Audio("assets\Audio\yay.mp3");
+//         this.noMatchSound = new Audio("assets\Audio\oh-no.mp3");
+//         this.winnerSound = new Audio("assets\Audio\friends-theme.mp3");
+//         this.timeUpSound = new Audio("assets\Audio\buzzer.mp3");
+//         this.winnerSound.volume = 0.75;
+//     }
+//     // play sound when card is turned over (whoosh)
+//     flipped() {
+//         this.flipSound.play();
+//     }
+//     // play sound when a match is found
+//     match() {
+//         this.matchSound.play();
+//     }
+//     // play error sound when no match
+//     noMatch() {
+//         this.noMatchSound.play();
+//     }
+//     // play victory song when game board is cleared
+//     winner() {
+//         this.winnerSound.play();
+//     }
+//     // buzzer when time is up
+//     timeUp() {
+//         this.timeUpSound.play();
+//     }
+// }
 
-// message to player that match was found
 
-// play error sound when no match
 
-// play victory song when game board is cleared
+// function to reset timer on game start
 
 // message to user that game was won
 
@@ -78,10 +147,9 @@ cards.forEach(card => card.addEventListener('click', flipCard));
 
 // warning sound when time is running out
 
-// buzzer when time is up
+
 
 // message to user that game was lost
 
 // play again? message 
 
-// function to reset (shuffle) cards and reset timer

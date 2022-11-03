@@ -8,6 +8,8 @@
     <title>Friends Memory Match</title>
 </head>
 <body>
+    <!-- create click to start message -->
+    <div id="start-message" class="overlay-message visible">Click to Start</div>
     <!--create game over/play again message-->
     <div id="game-over-message" class="overlay-message">Time's up!
         <span class="overlay-play-again">Click to play again</span>
@@ -21,7 +23,7 @@
     <h1 class="game-title">THE ONE WITH THE MATCH GAME</h1>
     <div class="timer-score-container">
         <div class="timer-score-info">
-            Time <span id="time-remaining">100</span>
+            Time <span id="time-remaining">60</span>
         </div>
         <!-- create scoreboard -->
         <div class="timer-score-info">
@@ -85,8 +87,9 @@
 </section>
     
     <!-- audio tags for game sounds -->
-
-
+    <audio id="match" src="assets/Audio/yay.mp3"></audio>
+    <audio id="noMatch" src="assets/Audio/oh-no.mp3"></audio>
+    <audio id="flipped" src="assets/Audio/whoosh.mp3"></audio>
     <script src="/script.js"></script>
 </body>
 </html>
