@@ -72,7 +72,8 @@ function winner() {
     }
 }
 function playAgain() {
-    document.getElementsByClassName('replay').addEventListener('click', () => {
+    document.getElementById('winner').addEventListener('click', () => {
+        document.getElementsByClassName('replay').classList.remove('visible');
         startGame();
         shuffleCards();
         resetBoard();
