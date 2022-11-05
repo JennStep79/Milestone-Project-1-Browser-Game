@@ -6,7 +6,7 @@
 /* style game title text */
 @font-face {
     font-family: "GABRWFFR";
-    src: url("/assets/Fonts/GABRWFFR.woff2") format('woff2');
+    src: url("./assets/Fonts/GABRWFFR.woff2") format('woff2');
 }
 .game-info {
     margin-left: 450px;
@@ -91,6 +91,9 @@ body {
     color: white;
     font-family: gabrwffr, serif;
     text-shadow: 3px 2px black;
+}
+.overlay-message:hover {
+    cursor: pointer;
 }
 .overlay-play-again {
     font-size: .3em;

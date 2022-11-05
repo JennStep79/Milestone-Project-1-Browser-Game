@@ -3,18 +3,16 @@ const cards = document.querySelectorAll('.card');
 let hasFlipped = false;
 let freezeBoard = false;
 let firstCard, secondCard;
+var matchedCard = 0;
 
-
-
-//     // game.gameStart();
-// });
 (function startGame() {
-    let overlays = Array.from(document.getElementsByClassName('overlay-message'));
-    overlays.forEach(overlay => {
-        overlay.addEventListener('click', () => {
-        overlay.classList.remove('visible');
+    // let overlays = Array.from(document.getElementsByClassName('overlay-message'));
+    // overlays.forEach(overlay => {
+        document.getElementById('start-message').addEventListener('click', () => {
+        document.getElementById('start-message').classList.remove('visible');
+        document.getElementById('winner').pause();
+        document.getElementById('winner').currentTime = 0;
         });
-    });
 })();
 // create function for clicked cards
 function flipCard() {
@@ -43,7 +41,7 @@ function checkForMatch(){
         freezeCards();
         document.getElementById('match').play();
         matchedCard++;
-        this.ticker.innerText = this.totalMatches;
+        winner();
     } else {
         resetCards();
         document.getElementById('no-match').play();
@@ -66,6 +64,19 @@ function resetCards() {
 function resetBoard() {
     [hasFlipped, freezeBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
+}
+function winner() {
+    if(matchedCard == 6) {
+        document.getElementById('winner').play();
+        document.getElementById('winner-message').classList.add('visible');
+    }
+}
+function playAgain() {
+    document.getElementsByClassName('replay').addEventListener('click', () => {
+        startGame();
+        shuffleCards();
+        resetBoard();
+    });
 }
 
 // function to reset (shuffle) cards

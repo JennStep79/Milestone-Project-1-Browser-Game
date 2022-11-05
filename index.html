@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="./style.css">
     <title>Friends Memory Match</title>
 </head>
 <body>
     <!-- create click to start message -->
     <div id="start-message" class="overlay-message visible">Click to Start</div>
     <!--create game over/play again message-->
-    <div id="game-over-message" class="overlay-message">Time's up!
+    <div id="game-over-message" class="overlay-message replay">Time's up!
         <span class="overlay-play-again">Click to play again</span>
     </div>
     <!--create You win!/play again message-->
-    <div id="winner-message" class="overlay-message">Congratulations!
+    <div id="winner-message" class="overlay-message replay">Congratulations!
         <span class="overlay-play-again">Click to play again</span>
     </div>
     <!-- create game title header -->
@@ -37,61 +37,61 @@
     
     <!-- create memory cards and add images for blank (facedown) and front (faceup) -->
     <div class="card" data-image = "central-perk">
-        <img class= "card-front" src="/assets/central-perk.png" alt="Central Perk"/>
-        <img class="card-back" src="/assets/friends-blank.png" alt="Friends Match Game"/>
+        <img class= "card-front" src="./assets/central-perk.png" alt="Central Perk"/>
+        <img class="card-back" src="./assets/friends-blank.png" alt="Friends Match Game"/>
     </div>
     <div class="card" data-image = "central-perk">
-        <img class= "card-front" src="/assets/central-perk.png" alt="Central Perk"/>
-        <img class="card-back" src="/assets/friends-blank.png" alt="Friends Match Game"/>
+        <img class= "card-front" src="./assets/central-perk.png" alt="Central Perk"/>
+        <img class="card-back" src="./assets/friends-blank.png" alt="Friends Match Game"/>
     </div>
     <div class="card" data-image = "couch">
-        <img class= "card-front" src="assets/couch.png" alt="Orange couch"/>
-        <img class="card-back" src="/assets/friends-blank.png" alt="Friends Match Game"/>
+        <img class= "card-front" src="./assets/couch.png" alt="Orange couch"/>
+        <img class="card-back" src="./assets/friends-blank.png" alt="Friends Match Game"/>
     </div>
     <div class="card" data-image = "couch">
-        <img class= "card-front" src="assets/couch.png" alt="Orange couch"/>
-        <img class="card-back" src="/assets/friends-blank.png" alt="Friends Match Game"/>
+        <img class= "card-front" src="./assets/couch.png" alt="Orange couch"/>
+        <img class="card-back" src="./assets/friends-blank.png" alt="Friends Match Game"/>
     </div>
     <div class="card" data-image = "lobster">
-        <img class= "card-front" src="/assets/lobster.png" alt="Lobster"/>
-        <img class="card-back" src="/assets/friends-blank.png" alt="Friends Match Game"/>
+        <img class= "card-front" src="./assets/lobster.png" alt="Lobster"/>
+        <img class="card-back" src="./assets/friends-blank.png" alt="Friends Match Game"/>
     </div>
     <div class="card" data-image = "lobster">
-        <img class= "card-front" src="/assets/lobster.png" alt="Lobster"/>
-        <img class="card-back" src="/assets/friends-blank.png" alt="Friends Match Game"/>
+        <img class= "card-front" src="./assets/lobster.png" alt="Lobster"/>
+        <img class="card-back" src="./assets/friends-blank.png" alt="Friends Match Game"/>
     </div>
     <div class="card" data-image = "picture-frame">
-        <img class= "card-front" src="/assets/picture-frame.png" alt="Picture frame"/>
-        <img class="card-back" src="/assets/friends-blank.png" alt="Friends Match Game"/>
+        <img class= "card-front" src="./assets/picture-frame.png" alt="Picture frame"/>
+        <img class="card-back" src="./assets/friends-blank.png" alt="Friends Match Game"/>
     </div>
     <div class="card" data-image = "picture-frame">
-        <img class= "card-front" src="/assets/picture-frame.png" alt="Picture frame"/>
-        <img class="card-back" src="/assets/friends-blank.png" alt="Friends Match Game"/>
+        <img class= "card-front" src="./assets/picture-frame.png" alt="Picture frame"/>
+        <img class="card-back" src="./assets/friends-blank.png" alt="Friends Match Game"/>
     </div>
     <div class="card" data-image = "smelly-cat">
-        <img class= "card-front" src="/assets/smelly-cat.png" alt="Smelly cat"/>
-        <img class="card-back" src="/assets/friends-blank.png" alt="Friends Match Game"/>
+        <img class= "card-front" src="./assets/smelly-cat.png" alt="Smelly cat"/>
+        <img class="card-back" src="./assets/friends-blank.png" alt="Friends Match Game"/>
     </div>
     <div class="card" data-image = "smelly-cat">
-        <img class= "card-front" src="/assets/smelly-cat.png" alt="Smelly cat"/>
-        <img class="card-back" src="/assets/friends-blank.png" alt="Friends Match Game"/>
+        <img class= "card-front" src="./assets/smelly-cat.png" alt="Smelly cat"/>
+        <img class="card-back" src="./assets/friends-blank.png" alt="Friends Match Game"/>
     </div>
     <div class="card" data-image = "unagi">
-        <img class= "card-front" src="/assets/unagi.png" alt="Unagi"/>
-        <img class="card-back" src="/assets/friends-blank.png" alt="Friends Match Game"/>
+        <img class= "card-front" src="./assets/unagi.png" alt="Unagi"/>
+        <img class="card-back" src="./assets/friends-blank.png" alt="Friends Match Game"/>
     </div>
     <div class="card" data-image = "unagi">
-        <img class= "card-front" src="/assets/unagi.png" alt="Unagi"/>
-        <img class="card-back" src="/assets/friends-blank.png" alt="Friends Match Game"/>
+        <img class= "card-front" src="./assets/unagi.png" alt="Unagi"/>
+        <img class="card-back" src="./assets/friends-blank.png" alt="Friends Match Game"/>
     </div>
 </section>
     
     <!-- audio tags for game sounds -->
-    <audio id="match" src="assets/Audio/yay.mp3"></audio>
-    <audio id="no-match" src="assets/Audio/oh-no.mp3"></audio>
-    <audio id="flipped" src="assets/Audio/whoosh.mp3"></audio>
-    <audio id="game-over" src="assets/Audio/hey-stick-a-fork-in-me-i-am-done.mp3"></audio>
-    <audio id="winner" src="assets/Audio/friends-theme.mp3"></audio>
-    <script src="/script.js"></script>
+    <audio id="match" src="./assets/Audio/yay.mp3"></audio>
+    <audio id="no-match" src="./assets/Audio/oh-no.mp3"></audio>
+    <audio id="flipped" src="./assets/Audio/whoosh.mp3"></audio>
+    <audio id="game-over" src="./assets/Audio/hey-stick-a-fork-in-me-i-am-done.mp3"></audio>
+    <audio id="winner" src="./assets/Audio/friends-theme.mp3"></audio>
+    <script src="./script.js"></script>
 </body>
 </html>
