@@ -1,10 +1,22 @@
-// create event listeners for clicked cards
 const cards = document.querySelectorAll('.card');
 
 let hasFlipped = false;
 let freezeBoard = false;
 let firstCard, secondCard;
 
+
+
+//     // game.gameStart();
+// });
+(function startGame() {
+    let overlays = Array.from(document.getElementsByClassName('overlay-message'));
+    overlays.forEach(overlay => {
+        overlay.addEventListener('click', () => {
+        overlay.classList.remove('visible');
+        });
+    });
+})();
+// create function for clicked cards
 function flipCard() {
     if (freezeBoard) return;
     if (this === firstCard) return;
@@ -30,18 +42,13 @@ function checkForMatch(){
     if (isMatch) {
         freezeCards();
         document.getElementById('match').play();
+        matchedCard++;
+        this.ticker.innerText = this.totalMatches;
     } else {
         resetCards();
-        document.getElementById('noMatch').play();
+        document.getElementById('no-match').play();
     }
-    // isMatch ? freezeCards(): resetCards();
-        
-        // this.audioControl.match();
-        // this.totalMatches++;
-        // this.ticker.innerText = this.totalMatches;
-        
-        // this.audioControl.noMatch();
-    }  
+}  
 // function to freeze matched cards on game board
 function freezeCards() {
     firstCard.removeEventListener('click', flipCard);
@@ -61,17 +68,6 @@ function resetBoard() {
     [firstCard, secondCard] = [null, null];
 }
 
-// function ready() {
-//     // let game = new MemoryMatch(60, cards);
-//     let overlays = Array.from(document.getElementsByClassName('overlay-message'));
-
-//     overlays.forEach(overlay => {
-//         overlay.addEventListener('click', () => {
-//             window.location.reload();
-//         });
-//         this.audioControl = new AudioControl();
-//     })
-// }
 // function to reset (shuffle) cards
 (function shuffleCards() {
     cards.forEach(card => {
@@ -88,54 +84,49 @@ cards.forEach(card => card.addEventListener('click', flipCard));
 //         this.timeRemaining = totalTime;
 //         this.timer = document.getElementById('time-remaining');
 //         this.ticker = document.getElementById('score');
-//         this.audioControl = new AudioControl();
 //     }
-//      gameStart() {
+     
+//     gameStart() {
 //         this.timeRemaining = this.totalTime;
 //         resetBoard();
+//         setTimeout(() => {
+//             this.countdown = this.startCountdown();
+//         }, 500)
 //         this.timer.innerText = this.timeRemaining;
 //         this.ticker.innerText = this.totalMatches;
 //     }
-// }
-
-
-
-
-
-
-
-// class AudioControl {
-//     constructor() {
-//         this.flipSound = new Audio("assets\Audio\whoosh.mp3");
-//         this.matchSound = new Audio("assets\Audio\yay.mp3");
-//         this.noMatchSound = new Audio("assets\Audio\oh-no.mp3");
-//         this.winnerSound = new Audio("assets\Audio\friends-theme.mp3");
-//         this.timeUpSound = new Audio("assets\Audio\buzzer.mp3");
-//         this.winnerSound.volume = 0.75;
+//     startCountdown() {
+//         return setInterval(() => {
+//             this.timeRemaining--;
+//             this.timer.innerText = this.timeRemaining;
+//             if(this.timeRemaining === 0) 
+//                 this.gameOver();
+//         }, 1000);
 //     }
-//     // play sound when card is turned over (whoosh)
-//     flipped() {
-//         this.flipSound.play();
+//     gameOver() {
+//         clearInterval(this.countdown);
+//         document.getElementById('game-over').play();
+//         document.getElementById('game-over-message').classList.add('visible');
 //     }
-//     // play sound when a match is found
-//     match() {
-//         this.matchSound.play();
-//     }
-//     // play error sound when no match
-//     noMatch() {
-//         this.noMatchSound.play();
-//     }
-//     // play victory song when game board is cleared
 //     winner() {
-//         this.winnerSound.play();
-//     }
-//     // buzzer when time is up
-//     timeUp() {
-//         this.timeUpSound.play();
+//         clearInterval(this.countdown);
+//         document.getElementById('winner').play();
+//         document.getElementById('winner-message').classList.add('visible');
 //     }
 // }
+// if (document.readyState == 'loading') {
+//     document.addEventListener('DOMContentLoaded', ready);
+// } else {
+//     ready();
+// }
 
+// function ready() {
+    
+//     let cards = Array.from(document.getElementsByClassName('card'));
+//     let game = new MemoryMatch(60, cards);
 
+    
+// });
 
 // function to reset timer on game start
 
@@ -144,8 +135,6 @@ cards.forEach(card => card.addEventListener('click', flipCard));
 // timer clock function
 
 // start timer when game is started (on first click?)
-
-// warning sound when time is running out
 
 
 
