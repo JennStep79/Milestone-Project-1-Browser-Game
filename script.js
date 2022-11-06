@@ -5,13 +5,11 @@ let freezeBoard = false;
 let firstCard, secondCard;
 var matchedCard = 0;
 
-(function startGame() {
-    // let overlays = Array.from(document.getElementsByClassName('overlay-message'));
-    // overlays.forEach(overlay => {
+(function openGame() {
         document.getElementById('start-message').addEventListener('click', () => {
         document.getElementById('start-message').classList.remove('visible');
-        document.getElementById('winner').pause();
-        document.getElementById('winner').currentTime = 0;
+        cards.forEach(card => card.addEventListener('click', flipCard));
+        shuffleCards();
         });
 })();
 // create function for clicked cards
@@ -65,29 +63,38 @@ function resetBoard() {
     [hasFlipped, freezeBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
 }
-function winner() {
-    if(matchedCard == 6) {
-        document.getElementById('winner').play();
-        document.getElementById('winner-message').classList.add('visible');
-    }
-}
-function playAgain() {
-    document.getElementById('winner').addEventListener('click', () => {
-        document.getElementsByClassName('replay').classList.remove('visible');
-        startGame();
-        shuffleCards();
-        resetBoard();
-    });
-}
 
 // function to reset (shuffle) cards
-(function shuffleCards() {
+function shuffleCards() {
     cards.forEach(card => {
         let randomNum = Math.floor(Math.random() * 12);
         card.style.order = randomNum;
     });
-})();
-cards.forEach(card => card.addEventListener('click', flipCard));
+};
+function startGame() {
+    let overlays = Array.from(document.getElementsByClassName('replay'));
+    overlays.forEach(overlay => {
+        overlay.addEventListener('click', () => {
+            overlay.classList.remove('visible');
+            document.getElementById('start-message').classList.add('visible');
+            document.getElementById('winner').pause();
+            document.getElementById('winner').currentTime = 0;
+            cards.forEach(card => {
+                card.classList.remove('flip');
+            })
+            matchedCard = 0;
+            shuffleCards();
+        });
+    });
+}
+        
+function winner() {
+    if(matchedCard == 6) {
+        document.getElementById('winner').play();
+        document.getElementById('winner-message').classList.add('visible');
+        startGame();
+    }
+}
 
 // class MemoryMatch {
 //     constructor(totalTime, cards) {
