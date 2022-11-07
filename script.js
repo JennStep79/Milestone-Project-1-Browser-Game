@@ -89,6 +89,40 @@ function shuffleCards() {
         card.style.order = randomNum;
     });
 };
+// timer clock function
+const countDown = () => {
+    remainingTime -= 1;
+    countContainer.innerHTML = remainingTime;
+    if(remainingTime === 0) {
+        gameOver();
+    }
+}
+// function to reset timer on game start
+const resetTimer = () => {
+    isStopped = true;
+    clearInterval(timer);
+    remainingTime = 30;
+    countContainer.innerHTML = remainingTime;
+}
+// reset scoreboard
+const resetScore = () => {
+    scoreCount = 0;
+    scoreContainer.innerHTML = scoreCount;
+}
+const gameOver = () => {
+    timeStopped = true;
+    clearInterval(timer);
+    document.getElementById('time-up').play();
+    document.getElementById('game-over-message').classList.add('visible');
+    remainingTime = 30;
+    countContainer.innerHTML = remainingTime;
+    setTimeout(() => {
+        document.getElementById('game-over').play();
+        }, 1500);
+    setTimeout(() => {
+        startGame();
+    }, 6000);    
+}
 
 function startGame() {
     let overlays = Array.from(document.getElementsByClassName('replay'));
@@ -117,34 +151,8 @@ function winner() {
         clearInterval(timer);
         document.getElementById('winner').play();
         document.getElementById('winner-message').classList.add('visible');
-        startGame();
-    }
-}
-// timer clock function
-const countDown = () => {
-    remainingTime -= 1;
-    countContainer.innerHTML = remainingTime;
-    if(remainingTime === 0) {
-        timeStopped = true;
-        clearInterval(timer);
-        remainingTime = 30;
-        countContainer.innerHTML = remainingTime;
-        document.getElementById('time-up').play();
-        document.getElementById('game-over-message').classList.add('visible');
         setTimeout(() => {
-            document.getElementById('game-over').play();
-            }, 1500);
+            startGame();
+        }, 6000);
     }
-}
-// function to reset timer on game start
-const resetTimer = () => {
-    isStopped = true;
-    clearInterval(timer);
-    remainingTime = 30;
-    countContainer.innerHTML = remainingTime;
-}
-// reset scoreboard
-const resetScore = () => {
-    scoreCount = 0;
-    scoreContainer.innerHTML = scoreCount;
 }
