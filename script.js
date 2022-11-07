@@ -4,14 +4,30 @@ let hasFlipped = false;
 let freezeBoard = false;
 let firstCard, secondCard;
 var matchedCard = 0;
+var remainingTime = 30;
+var timeStopped = true;
+var scoreCount = 0;
+const countContainer = document.getElementById('time-number');
+const scoreContainer = document.getElementById('score');
 
 (function openGame() {
         document.getElementById('start-message').addEventListener('click', () => {
         document.getElementById('start-message').classList.remove('visible');
         cards.forEach(card => card.addEventListener('click', flipCard));
         shuffleCards();
+        setTimeout(() => {
+            startTimer();
+        }, 500);
         });
 })();
+// start timer when game is started
+const startTimer = () => {
+    if(timeStopped) {
+        timeStopped = false;
+        countContainer.innerHTML = remainingTime;
+        timer = setInterval(countDown, 1000);
+    }
+}
 // create function for clicked cards
 function flipCard() {
     if (freezeBoard) return;
@@ -39,6 +55,8 @@ function checkForMatch(){
         freezeCards();
         document.getElementById('match').play();
         matchedCard++;
+        scoreCount++;
+        scoreContainer.innerHTML = scoreCount;
         winner();
     } else {
         resetCards();
@@ -71,93 +89,62 @@ function shuffleCards() {
         card.style.order = randomNum;
     });
 };
+
 function startGame() {
     let overlays = Array.from(document.getElementsByClassName('replay'));
-    overlays.forEach(overlay => {
+    [...overlays].forEach(overlay => {
         overlay.addEventListener('click', () => {
             overlay.classList.remove('visible');
             document.getElementById('start-message').classList.add('visible');
             document.getElementById('winner').pause();
             document.getElementById('winner').currentTime = 0;
+            document.getElementById('game-over').pause();
+            document.getElementById('game-over').currentTime = 0;
             cards.forEach(card => {
                 card.classList.remove('flip');
             })
             matchedCard = 0;
             shuffleCards();
+            resetTimer();
+            resetScore();
         });
     });
 }
-        
+// message to user that game was won       
 function winner() {
     if(matchedCard == 6) {
+        timeStopped = true;
+        clearInterval(timer);
         document.getElementById('winner').play();
         document.getElementById('winner-message').classList.add('visible');
         startGame();
     }
 }
-
-// class MemoryMatch {
-//     constructor(totalTime, cards) {
-//         this.cardsArray = cards;
-//         this.totalTime = totalTime;
-//         this.timeRemaining = totalTime;
-//         this.timer = document.getElementById('time-remaining');
-//         this.ticker = document.getElementById('score');
-//     }
-     
-//     gameStart() {
-//         this.timeRemaining = this.totalTime;
-//         resetBoard();
-//         setTimeout(() => {
-//             this.countdown = this.startCountdown();
-//         }, 500)
-//         this.timer.innerText = this.timeRemaining;
-//         this.ticker.innerText = this.totalMatches;
-//     }
-//     startCountdown() {
-//         return setInterval(() => {
-//             this.timeRemaining--;
-//             this.timer.innerText = this.timeRemaining;
-//             if(this.timeRemaining === 0) 
-//                 this.gameOver();
-//         }, 1000);
-//     }
-//     gameOver() {
-//         clearInterval(this.countdown);
-//         document.getElementById('game-over').play();
-//         document.getElementById('game-over-message').classList.add('visible');
-//     }
-//     winner() {
-//         clearInterval(this.countdown);
-//         document.getElementById('winner').play();
-//         document.getElementById('winner-message').classList.add('visible');
-//     }
-// }
-// if (document.readyState == 'loading') {
-//     document.addEventListener('DOMContentLoaded', ready);
-// } else {
-//     ready();
-// }
-
-// function ready() {
-    
-//     let cards = Array.from(document.getElementsByClassName('card'));
-//     let game = new MemoryMatch(60, cards);
-
-    
-// });
-
-// function to reset timer on game start
-
-// message to user that game was won
-
 // timer clock function
-
-// start timer when game is started (on first click?)
-
-
-
-// message to user that game was lost
-
-// play again? message 
-
+const countDown = () => {
+    remainingTime -= 1;
+    countContainer.innerHTML = remainingTime;
+    if(remainingTime === 0) {
+        timeStopped = true;
+        clearInterval(timer);
+        remainingTime = 30;
+        countContainer.innerHTML = remainingTime;
+        document.getElementById('time-up').play();
+        document.getElementById('game-over-message').classList.add('visible');
+        setTimeout(() => {
+            document.getElementById('game-over').play();
+            }, 1500);
+    }
+}
+// function to reset timer on game start
+const resetTimer = () => {
+    isStopped = true;
+    clearInterval(timer);
+    remainingTime = 30;
+    countContainer.innerHTML = remainingTime;
+}
+// reset scoreboard
+const resetScore = () => {
+    scoreCount = 0;
+    scoreContainer.innerHTML = scoreCount;
+}
