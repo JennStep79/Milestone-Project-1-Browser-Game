@@ -4,7 +4,7 @@ let hasFlipped = false;
 let freezeBoard = false;
 let firstCard, secondCard;
 var matchedCard = 0;
-var remainingTime = 30;
+var remainingTime = 45;
 var timeStopped = true;
 var scoreCount = 0;
 const countContainer = document.getElementById('time-number');
@@ -101,7 +101,7 @@ const countDown = () => {
 const resetTimer = () => {
     isStopped = true;
     clearInterval(timer);
-    remainingTime = 30;
+    remainingTime = 45;
     countContainer.innerHTML = remainingTime;
 }
 // reset scoreboard
@@ -114,14 +114,12 @@ const gameOver = () => {
     clearInterval(timer);
     document.getElementById('time-up').play();
     document.getElementById('game-over-message').classList.add('visible');
-    remainingTime = 30;
+    remainingTime = 45;
     countContainer.innerHTML = remainingTime;
     setTimeout(() => {
         document.getElementById('game-over').play();
         }, 1500);
-    setTimeout(() => {
-        startGame();
-    }, 6000);    
+    startGame();   
 }
 
 function startGame() {
@@ -151,8 +149,6 @@ function winner() {
         clearInterval(timer);
         document.getElementById('winner').play();
         document.getElementById('winner-message').classList.add('visible');
-        setTimeout(() => {
-            startGame();
-        }, 6000);
+        startGame();
     }
 }

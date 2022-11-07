@@ -96,7 +96,11 @@ body {
     cursor: pointer;
 }
 .overlay-play-again {
-    font-size: .3em;
+    font-size: .4em;
+}
+.overlay-creator {
+    font-size: .1em;
+    padding: 40px;
 }
 .overlay-message.visible {
     display: flex;
