@@ -8,7 +8,7 @@ Technologies used:
 
 I created the card back and the card front images using Canva. The font I used is called Gabriel Weiss Friends by Gabriel Weiss. It was downloaded from Dafont.com. The sound clips were downloaded from 101soundboards.com. 
 
-For this build, I researched and learned about some new concepts that were previously unfamiliar to me. These include the CSS properties "perspective" and "transform-style" to create the 3D effect when flipping the cards over, and "dataset" to match the card images into pairs.
+For this build, I researched and learned about some new concepts that were previously unfamiliar to me. These include the CSS properties "perspective" and "transform-style" to create the 3D effect when flipping the cards over, "dataset" to match the card images into pairs, and the CSS "order" property to shuffle the cards.
 
 Outstanding bugs: 
 
