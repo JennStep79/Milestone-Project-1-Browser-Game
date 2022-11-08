@@ -136,6 +136,7 @@ function startGame() {
                 card.classList.remove('flip');
             })
             matchedCard = 0;
+            resetBoard();
             shuffleCards();
             resetTimer();
             resetScore();
